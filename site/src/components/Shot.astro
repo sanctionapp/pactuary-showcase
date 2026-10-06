@@ -1,6 +1,6 @@
 ---
 import { Image } from "astro:assets";
-import type { ImageMetadata } from "astro";
+import { shotImage } from "../lib/shots";
 
 interface Props {
   name: string;
@@ -11,11 +11,8 @@ interface Props {
 
 const { name, alt, eager = false, sizes = "(max-width: 860px) 100vw, 680px" } = Astro.props;
 
-// Ekran goruntuleri README ile ortak: repo kokundeki assets/screenshots.
-const files = import.meta.glob<{ default: ImageMetadata }>("../../../assets/screenshots/*.webp", { eager: true });
-const find = (file: string) => Object.entries(files).find(([path]) => path.endsWith(`/${file}`))?.[1].default;
-const light = find(`${name}-light.webp`);
-const dark = find(`${name}-dark.webp`);
+const light = shotImage(`${name}-light.webp`);
+const dark = shotImage(`${name}-dark.webp`);
 const widths = [640, 960, 1280, 1920];
 ---
 <figure class="frame">

@@ -1,5 +1,5 @@
 export const LINKS = {
-  github: "https://github.com/Burakesnglu/pactuary-showcase",
+  github: "https://github.com/sanctionapp/pactuary-showcase",
   githubProfile: "https://github.com/Burakesnglu",
   linkedin: "https://www.linkedin.com/in/burakesnglu",
   email: "burakesenoglu.dev@gmail.com",

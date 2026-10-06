@@ -3,6 +3,7 @@ import Shot from "./Shot.astro";
 import Icon from "./Icon.astro";
 import type { Dict } from "../i18n/en";
 import { LINKS, demoMailto } from "../consts";
+import { hasShot } from "../lib/shots";
 
 interface Props { t: Dict }
 const { t } = Astro.props;
@@ -21,6 +22,8 @@ function wrap(text: string, max = 22): string[] {
 }
 const steps = t.how.steps.map((s, i) => ({ ...s, lines: wrap(t.how.notes[i]), x: 20 + i * 196 }));
 const bars = [1, 1, 12 / 25, 0];
+const heroShot = ["01-screening-results", "04-alert-structuring-four-eyes"].find(hasShot) ?? "01-screening-results";
+const modules = t.modules.items.filter((m) => hasShot(m.shot));
 ---
 <section class="hero">
   <div class="wrap">
@@ -51,7 +54,7 @@ const bars = [1, 1, 12 / 25, 0];
       </div>
     </div>
     <div class="hero-shot">
-      <Shot name="01-screening-results" alt={t.hero.shotAlt} eager sizes="(max-width: 1212px) 100vw, 1180px" />
+      <Shot name={heroShot} alt={heroShot.startsWith("01") ? t.hero.shotAlt : t.modules.items.find((m) => m.shot === heroShot)?.alt ?? t.hero.shotAlt} eager sizes="(max-width: 1212px) 100vw, 1180px" />
     </div>
   </div>
 </section>
@@ -82,7 +85,7 @@ const bars = [1, 1, 12 / 25, 0];
       <h2 id="modules-title">{t.modules.title}</h2>
     </div>
     <div>
-      {t.modules.items.map((m) => (
+      {modules.map((m) => (
         <article class="module">
           <div class="module-text">
             <h3>{m.title}</h3>
