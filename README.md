@@ -9,8 +9,8 @@
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-336791)
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/01-screening-results-dark.webp">
-  <img alt="Screening results for a publicly listed sanctioned entity, with risk level, topics and source lists" src="assets/screenshots/01-screening-results-light.webp">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/04-alert-structuring-four-eyes-dark.webp">
+  <img alt="Structuring alert with triggering transactions and a completed four-eyes review" src="assets/screenshots/04-alert-structuring-four-eyes-light.webp">
 </picture>
 
 **Website:** _link added after deploy_ · **Demo video:** [`assets/demo/`](assets/demo/)
@@ -49,6 +49,8 @@ yet and the screen labels its output as sample data. KYC/CDD onboarding is on th
 All customers, subjects and transactions are fictional (a synthetic "Pactuary Demo Bank"). Real names appear only as results
 of screening against public sanctions lists.
 
+<!-- Screens 01–03 (screening results, entity detail, batch screening) are added in the next update.
+
 **Screening results.** Risk level, topics, match score and the source lists behind each match.
 
 <picture>
@@ -69,6 +71,8 @@ of screening against public sanctions lists.
   <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/03-batch-screening-dark.webp">
   <img alt="Batch screening" src="assets/screenshots/03-batch-screening-light.webp">
 </picture>
+
+-->
 
 **Structuring alert with a completed four-eyes review.** Three transfers just under the threshold within 7 days; the maker's decision and the checker's approval are both on record.
 
