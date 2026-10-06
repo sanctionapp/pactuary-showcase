@@ -13,7 +13,7 @@
   <img alt="Structuring alert with triggering transactions and a completed four-eyes review" src="assets/screenshots/04-alert-structuring-four-eyes-light.webp">
 </picture>
 
-**Website:** _link added after deploy_ · **Demo video:** [`assets/demo/`](assets/demo/)
+**Website:** [pactuary-showcase.vercel.app](https://pactuary-showcase.vercel.app) · **Demo video:** [`assets/demo/`](assets/demo/)
 
 > This is a code-free showcase. The product source code is private; I'm happy to walk through it in an interview.
 
