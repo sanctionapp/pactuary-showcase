@@ -1,0 +1,280 @@
+---
+import Shot from "./Shot.astro";
+import Icon from "./Icon.astro";
+import type { Dict } from "../i18n/en";
+import { LINKS, demoMailto } from "../consts";
+
+interface Props { t: Dict }
+const { t } = Astro.props;
+const lang = t.lang as "en" | "tr";
+
+/** Kutu icine sigmasi icin notu en fazla iki satira boler (~22 karakter). */
+function wrap(text: string, max = 22): string[] {
+  const lines: string[] = [];
+  let line = "";
+  for (const word of text.split(" ")) {
+    if (line && (line + " " + word).length > max) { lines.push(line); line = word; }
+    else line = line ? line + " " + word : word;
+  }
+  if (line) lines.push(line);
+  return lines.slice(0, 2);
+}
+const steps = t.how.steps.map((s, i) => ({ ...s, lines: wrap(t.how.notes[i]), x: 20 + i * 196 }));
+const bars = [1, 1, 12 / 25, 0];
+---
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <p class="eyebrow rise">{t.hero.eyebrow}</p>
+        <h1 class="rise rise-2">{t.hero.title}</h1>
+        <p class="lead rise rise-3">{t.hero.lead}</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href={demoMailto(lang)}><Icon name="mail" />{t.hero.ctaDemo}</a>
+          <a class="btn btn-ghost" href={LINKS.github} target="_blank" rel="noopener"><Icon name="github" />{t.hero.ctaGithub}</a>
+        </div>
+        <p class="hero-note">{t.hero.note}</p>
+      </div>
+      <div class="hero-visual">
+        <div class="receipt" role="img" aria-label={`${t.hero.receiptTitle}: ${t.hero.receiptClear}. ${t.hero.receiptIncomplete}.`}>
+          <div class="receipt-head"><span>{t.hero.receiptTitle}</span><span>{t.hero.receiptQuery}: {t.hero.receiptQueryValue}</span></div>
+          <div class="receipt-body">
+            <div class="receipt-row"><span class="k">OpenSanctions /match</span><span class="t">184 ms</span><span class="st st-ok">{t.hero.receiptOk}</span></div>
+            <div class="receipt-row"><span class="k">Internal lists · pg_trgm</span><span class="t">289 ms</span><span class="st st-ok">{t.hero.receiptOk}</span></div>
+            <div class="verdict verdict-clear">{t.hero.receiptClear}</div>
+            <div class="receipt-divider"></div>
+            <div class="receipt-row"><span class="k">OpenSanctions /match</span><span class="t">—</span><span class="st st-fail">{t.hero.receiptFail}</span></div>
+            <div class="receipt-row"><span class="k">Internal lists · pg_trgm</span><span class="t">274 ms</span><span class="st st-ok">{t.hero.receiptOk}</span></div>
+            <div class="verdict verdict-incomplete">{t.hero.receiptIncomplete}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="hero-shot">
+      <Shot name="01-screening-results" alt={t.hero.shotAlt} eager sizes="(max-width: 1212px) 100vw, 1180px" />
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="problem-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{t.problem.eyebrow}</p>
+      <h2 id="problem-title">{t.problem.title}</h2>
+    </div>
+    <div class="compare">
+      <div class="compare-col before">
+        <h3>{t.problem.before}</h3>
+        <ul>{t.problem.beforeItems.map((item) => <li><Icon name="x" />{item}</li>)}</ul>
+      </div>
+      <div class="compare-col after">
+        <h3>{t.problem.after}</h3>
+        <ul>{t.problem.afterItems.map((item) => <li><Icon name="check" />{item}</li>)}</ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="modules" aria-labelledby="modules-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{t.modules.eyebrow}</p>
+      <h2 id="modules-title">{t.modules.title}</h2>
+    </div>
+    <div>
+      {t.modules.items.map((m) => (
+        <article class="module">
+          <div class="module-text">
+            <h3>{m.title}</h3>
+            <p>{m.body}</p>
+          </div>
+          <Shot name={m.shot} alt={m.alt} />
+        </article>
+      ))}
+    </div>
+    <div class="more">
+      <h3>{t.modules.more}</h3>
+      <div class="more-grid">
+        {t.modules.moreItems.map((m) => (
+          <div class="more-item"><strong>{m.title}</strong><p>{m.body}</p></div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="how" aria-labelledby="how-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{t.how.eyebrow}</p>
+      <h2 id="how-title">{t.how.title}</h2>
+    </div>
+    <div class="flow">
+      <svg viewBox="0 0 1000 250" role="img" aria-label={t.how.diagramLabel}>
+        {steps.map((s, i) => (
+          <g>
+            <rect class={i === 3 ? "fn-hot" : "fn"} x={s.x} y="30" width="168" height="98" rx="10" />
+            <text class="ft" x={s.x + 84} y="66" text-anchor="middle">{s.title}</text>
+            {s.lines.map((line, j) => <text class="fs" x={s.x + 84} y={93 + j * 17} text-anchor="middle">{line}</text>)}
+            {i < steps.length - 1 && (
+              <>
+                <path class="fa" d={`M${s.x + 172} 79 H${s.x + 190}`} />
+                <path class="fah" d={`M${s.x + 192} 79 l-7 -4.5 v9 z`} />
+              </>
+            )}
+          </g>
+        ))}
+        <path class="ff" d="M300 128 V172 H250" />
+        <text class="fft" x="20" y="200">{t.how.failNote}</text>
+        <path class="fc" d="M650 128 V172 H780 V134" />
+        <path class="fah" style="fill: var(--copper-fill)" d="M780 130 l-4.5 8 h9 z" />
+        <text class="fct" x="715" y="200" text-anchor="middle">{t.how.fourEyesNote}</text>
+      </svg>
+    </div>
+    <ol class="flow-steps" style="list-style:none;padding:0;margin-top:2rem">
+      {t.how.steps.map((s) => <li><h3>{s.title}</h3><p>{s.body}</p></li>)}
+    </ol>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="principles-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{t.principles.eyebrow}</p>
+      <h2 id="principles-title">{t.principles.title}</h2>
+    </div>
+    <div class="principles">
+      {t.principles.items.map((p) => <div class="principle"><h3>{p.title}</h3><p>{p.body}</p></div>)}
+    </div>
+    <p class="disclaimer">{t.principles.disclaimer}</p>
+  </div>
+</section>
+
+<section class="section" id="benchmark" aria-labelledby="benchmark-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{t.benchmark.eyebrow}</p>
+      <h2 id="benchmark-title">{t.benchmark.title}</h2>
+      <p class="lead">{t.benchmark.lead}</p>
+    </div>
+    <div class="figures">
+      {t.benchmark.figures.map((f) => (
+        <div class="figure"><span class="v">{f.value}</span><span class="l">{f.label}</span><span class="d">{f.detail}</span></div>
+      ))}
+    </div>
+    <div class="bench-grid">
+      <div>
+        <p class="sub-label" style="margin-bottom:1rem">{t.benchmark.breakdownTitle}</p>
+        <dl class="breakdown">
+          {t.benchmark.breakdown.map((b, i) => (
+            <div>
+              <dt>{b.label}<span>{b.value}</span></dt>
+              <dd><i class={i >= 2 ? "clean" : undefined} style={`width:${Math.max(bars[i] * 100, 0)}%`}></i></dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+      <ul class="bench-notes">{t.benchmark.notes.map((n) => <li>{n}</li>)}</ul>
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="security-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{t.security.eyebrow}</p>
+      <h2 id="security-title">{t.security.title}</h2>
+    </div>
+    <div class="sec-grid">
+      {t.security.items.map((s) => <div class="sec-item"><h3>{s.title}</h3><p>{s.body}</p></div>)}
+    </div>
+    <div class="stack-row">
+      <div>
+        <p class="sub-label">{t.security.stackTitle}</p>
+        <div class="chips">{t.security.stack.map((s) => <span class="chip">{s}</span>)}</div>
+      </div>
+      <div class="quality">
+        {t.security.quality.map((q) => <div><b>{q.value}</b><span>{q.label}</span></div>)}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="api" aria-labelledby="api-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{t.api.eyebrow}</p>
+      <h2 id="api-title">{t.api.title}</h2>
+      <p class="lead">{t.api.lead}</p>
+    </div>
+    <div class="api-grid">
+      <figure class="code">
+        <figcaption class="code-head"><span>{t.api.requestLabel}</span><span>POST /api/v1/screening</span></figcaption>
+<pre><code><span class="k">POST</span> /api/v1/screening
+<span class="k">Authorization:</span> Bearer <span class="c">sk_test_EXAMPLE_ONLY_not_a_real_key</span>
+<span class="k">Content-Type:</span> application/json
+
+&#123;
+  <span class="s">"name"</span>: <span class="s">"Defne Örnekoğlu"</span>,
+  <span class="s">"birthDate"</span>: <span class="s">"1987"</span>,
+  <span class="s">"countries"</span>: [<span class="s">"TR"</span>],
+  <span class="s">"category"</span>: <span class="s">"individual"</span>
+&#125;</code></pre>
+      </figure>
+      <div>
+        <figure class="code">
+          <figcaption class="code-head"><span>{t.api.responseLabel}</span><span>application/json</span></figcaption>
+<pre><code>&#123;
+  <span class="s">"results"</span>: [],
+  <span class="s">"total"</span>: <span class="n">0</span>,
+  <span class="s">"totalRelation"</span>: <span class="s">"eq"</span>,
+  <span class="s">"highestRisk"</span>: <span class="n">null</span>,
+  <span class="s">"providers"</span>: [
+    &#123; <span class="s">"provider"</span>: <span class="s">"opensanctions"</span>, <span class="s">"ok"</span>: <span class="n">true</span>, <span class="s">"resultCount"</span>: <span class="n">0</span>, <span class="s">"latencyMs"</span>: <span class="n">184</span> &#125;,
+    &#123; <span class="s">"provider"</span>: <span class="s">"local"</span>, <span class="s">"ok"</span>: <span class="n">true</span>, <span class="s">"resultCount"</span>: <span class="n">0</span>, <span class="s">"latencyMs"</span>: <span class="n">289</span> &#125;
+  ],
+  <span class="s">"remainingQuota"</span>: <span class="n">4210</span>
+&#125;</code></pre>
+        </figure>
+        <figure class="code">
+          <figcaption class="code-head"><span>{t.api.failLabel}</span><span>application/json</span></figcaption>
+<pre><code>&#123;
+  <span class="s">"error"</span>: <span class="s">"…"</span>,
+  <span class="s">"errorCode"</span>: <span class="s">"TIMEOUT"</span>,
+  <span class="s">"providers"</span>: [
+    &#123; <span class="s">"provider"</span>: <span class="s">"opensanctions"</span>, <span class="s">"ok"</span>: <span class="n">false</span>, … &#125;,
+    &#123; <span class="s">"provider"</span>: <span class="s">"local"</span>, <span class="s">"ok"</span>: <span class="n">false</span>, … &#125;
+  ]
+&#125;</code></pre>
+        </figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="faq" aria-labelledby="faq-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{t.faq.eyebrow}</p>
+      <h2 id="faq-title">{t.faq.title}</h2>
+    </div>
+    <div class="faq">
+      {t.faq.items.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+    </div>
+  </div>
+</section>
+
+<section class="section" aria-labelledby="cta-title">
+  <div class="wrap">
+    <div class="cta">
+      <div>
+        <h2 id="cta-title">{t.cta.title}</h2>
+        <p>{t.cta.body} {t.cta.pricing}</p>
+      </div>
+      <div class="cta-actions">
+        <a class="btn btn-primary" href={demoMailto(lang)}><Icon name="mail" />{t.cta.demo}</a>
+        <a class="btn btn-ghost" href={LINKS.github} target="_blank" rel="noopener"><Icon name="github" />{t.cta.github}</a>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,133 @@
+---
+import "@fontsource-variable/fraunces/opsz.css";
+import "@fontsource-variable/inter";
+import "@fontsource/jetbrains-mono/400.css";
+import "../styles/global.css";
+import frauncesLatin from "@fontsource-variable/fraunces/files/fraunces-latin-opsz-normal.woff2?url";
+import interLatin from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
+import frauncesLatinExt from "@fontsource-variable/fraunces/files/fraunces-latin-ext-opsz-normal.woff2?url";
+import interLatinExt from "@fontsource-variable/inter/files/inter-latin-ext-wght-normal.woff2?url";
+import Icon from "../components/Icon.astro";
+import type { Dict } from "../i18n/en";
+import { LINKS, demoMailto } from "../consts";
+
+interface Props {
+  t: Dict;
+  title: string;
+  description: string;
+  /** Path of this page without the language prefix, e.g. "/" or "/about". */
+  path: string;
+}
+
+const { t, title, description, path } = Astro.props;
+const lang = t.lang as "en" | "tr";
+const prefix = lang === "tr" ? "/tr" : "";
+const otherPrefix = lang === "tr" ? "" : "/tr";
+const join = (p: string, base: string) => (base + (p === "/" ? "/" : p)).replace(/\/+/g, "/");
+const site = Astro.site ?? new URL("https://pactuary-showcase.vercel.app");
+const canonical = new URL(join(path, prefix), site).href;
+const enUrl = new URL(join(path, ""), site).href;
+const trUrl = new URL(join(path, "/tr"), site).href;
+const ogImage = new URL("/og.png", site).href;
+const home = prefix || "/";
+---
+<!doctype html>
+<html lang={lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <link rel="alternate" hreflang="en" href={enUrl} />
+    <link rel="alternate" hreflang="tr" href={trUrl} />
+    <link rel="alternate" hreflang="x-default" href={enUrl} />
+    <link rel="preload" href={frauncesLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
+    {lang === "tr" && <link rel="preload" href={frauncesLatinExt} as="font" type="font/woff2" crossorigin />}
+    {lang === "tr" && <link rel="preload" href={interLatinExt} as="font" type="font/woff2" crossorigin />}
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="sitemap" href="/sitemap-index.xml" />
+    <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Pactuary" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:locale" content={lang === "tr" ? "tr_TR" : "en_US"} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    <script is:inline>
+      (function () {
+        try {
+          var s = localStorage.getItem("pactuary-theme");
+          if (s === "dark" || s === "light") document.documentElement.setAttribute("data-theme", s);
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#main">{t.nav.skip}</a>
+    <header class="site-header">
+      <div class="wrap">
+        <a class="logo" href={home} aria-label="Pactuary">Pactuary<span>.</span></a>
+        <nav class="nav" aria-label="Primary">
+          <a href={`${home === "/" ? "" : home}/#modules`}>{t.nav.modules}</a>
+          <a href={`${home === "/" ? "" : home}/#how`}>{t.nav.how}</a>
+          <a href={`${home === "/" ? "" : home}/#benchmark`}>{t.nav.benchmark}</a>
+          <a href={`${home === "/" ? "" : home}/#api`}>{t.nav.api}</a>
+          <a href={`${home === "/" ? "" : home}/#faq`}>{t.nav.faq}</a>
+          <a href={`${prefix}/about`}>{t.nav.about}</a>
+        </nav>
+        <div class="header-tools">
+          <a class="lang-link" href={join(path, otherPrefix)} hreflang={lang === "tr" ? "en" : "tr"} lang={lang === "tr" ? "en" : "tr"}>
+            {lang === "tr" ? "EN" : "TR"}<span class="sr-only" style="position:absolute;left:-9999px">{t.nav.langLabel}</span>
+          </a>
+          <button class="icon-btn" type="button" id="theme-toggle" aria-label={t.nav.theme}>
+            <Icon name="moon" class="theme-icon-light" />
+            <Icon name="sun" class="theme-icon-dark" />
+          </button>
+          <a class="btn btn-primary header-cta" href={demoMailto(lang)}>{t.nav.demo}</a>
+        </div>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap">
+        <div>
+          <p class="footer-built">{t.footer.built}</p>
+          <p>{t.footer.data}</p>
+          <p>{t.footer.synthetic}</p>
+        </div>
+        <div class="footer-links">
+          <a href={LINKS.linkedin} rel="me noopener" target="_blank">LinkedIn</a>
+          <a href={LINKS.githubProfile} rel="me noopener" target="_blank">GitHub</a>
+          <a href={`${prefix}/about`}>{t.footer.about}</a>
+        </div>
+      </div>
+    </footer>
+    <script is:inline>
+      (function () {
+        var btn = document.getElementById("theme-toggle");
+        if (!btn) return;
+        btn.addEventListener("click", function () {
+          var root = document.documentElement;
+          var current = root.getAttribute("data-theme") ||
+            (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          var next = current === "dark" ? "light" : "dark";
+          root.setAttribute("data-theme", next);
+          try { localStorage.setItem("pactuary-theme", next); } catch (e) {}
+        });
+      })();
+    </script>
+  </body>
+</html>
