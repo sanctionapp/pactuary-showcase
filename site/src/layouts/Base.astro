@@ -49,8 +49,7 @@ const home = prefix || "/";
     <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="sitemap" href="/sitemap-index.xml" />
-    <meta name="theme-color" content="#fafaf8" media="(prefers-color-scheme: light)" />
-    <meta name="theme-color" content="#0b0f14" media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#fafaf8" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Pactuary" />
     <meta property="og:title" content={title} />
@@ -121,8 +120,8 @@ const home = prefix || "/";
         if (!btn) return;
         btn.addEventListener("click", function () {
           var root = document.documentElement;
-          var current = root.getAttribute("data-theme") ||
-            (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+          // Varsayilan aydinlik; sistem temasina bakilmaz.
+          var current = root.getAttribute("data-theme") || "light";
           var next = current === "dark" ? "light" : "dark";
           root.setAttribute("data-theme", next);
           try { localStorage.setItem("pactuary-theme", next); } catch (e) {}

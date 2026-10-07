@@ -22,26 +22,6 @@
   color-scheme: light;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) {
-    --paper: #0b0f14;
-    --surface: #121820;
-    --surface-2: #171e27;
-    --line: #26303b;
-    --ink: #eceae5;
-    --ink-2: #c9ccd0;
-    --muted: #9aa3ae;
-    --copper: #dc9a78;
-    --copper-fill: #c27d5b;
-    --copper-soft: #2a1e18;
-    --clear: #5cc497;
-    --clear-soft: #132a20;
-    --fail: #ef857c;
-    --fail-soft: #2d1716;
-    --shadow: 0 1px 2px rgb(0 0 0 / 0.4), 0 16px 40px -16px rgb(0 0 0 / 0.7);
-    color-scheme: dark;
-  }
-}
 
 :root[data-theme="dark"] {
   --paper: #0b0f14;
@@ -62,12 +42,8 @@
   color-scheme: dark;
 }
 
-/* Screenshot pairs follow the site theme (all three states). */
+/* Screenshot pairs follow the site theme. Light is the default; dark only when chosen with the toggle. */
 .shot-dark { display: none; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .shot-dark { display: block; }
-  :root:not([data-theme="light"]) .shot-light { display: none; }
-}
 :root[data-theme="dark"] .shot-dark { display: block; }
 :root[data-theme="dark"] .shot-light { display: none; }
 
@@ -152,10 +128,6 @@ p { margin: 0; }
 .theme-icon-dark { display: none; }
 :root[data-theme="dark"] .theme-icon-dark { display: block; }
 :root[data-theme="dark"] .theme-icon-light { display: none; }
-@media (prefers-color-scheme: dark) {
-  :root:not([data-theme="light"]) .theme-icon-dark { display: block; }
-  :root:not([data-theme="light"]) .theme-icon-light { display: none; }
-}
 @media (max-width: 960px) {
   .nav { display: none; }
   .header-tools { margin-left: auto; }
