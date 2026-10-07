@@ -8,10 +8,7 @@
 ![Next.js](https://img.shields.io/badge/Next.js-16-111111)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-336791)
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/01-screening-results-dark.webp">
-  <img alt="Screening results for a publicly listed sanctioned entity, with risk level, topics and source lists" src="assets/screenshots/01-screening-results-light.webp">
-</picture>
+<img alt="Screening results for a publicly listed sanctioned entity, with risk level, topics and source lists" src="assets/screenshots/01-screening-results-light.webp">
 
 **Website:** [pactuary-showcase.vercel.app](https://pactuary-showcase.vercel.app) · **Demo video (72 s):** [MP4](assets/demo/pactuary-demo.mp4)
 
@@ -53,85 +50,52 @@ Search → result → entity detail → decision → second approver (four-eyes)
 
 ## Screenshots
 
-All customers, subjects and transactions are fictional (a synthetic "Pactuary Demo Bank"). Real names appear only as results
+Screenshots show the English interface in the light theme (a dark theme and a Turkish interface are also available). All customers, subjects and transactions are fictional (a synthetic "Pactuary Demo Bank"). Real names appear only as results
 of screening against public sanctions lists.
 
 **Screening results.** Risk level, topics, match score and the source lists behind each match.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/01-screening-results-dark.webp">
-  <img alt="Screening results" src="assets/screenshots/01-screening-results-light.webp">
-</picture>
+<img alt="Screening results" src="assets/screenshots/01-screening-results-light.webp">
 
 **Entity detail and decision form.** Aliases, identifiers, sanctions programmes and source documents; the analyst records a decision with a mandatory reason.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/02-entity-detail-decision-dark.webp">
-  <img alt="Entity detail with decision form" src="assets/screenshots/02-entity-detail-decision-light.webp">
-</picture>
+<img alt="Entity detail with decision form" src="assets/screenshots/02-entity-detail-decision-light.webp">
 
 **Batch screening.** Two sanctioned companies and two fictional customers screened in one request.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/03a-results-dark.webp">
-  <img alt="Batch screening results" src="assets/screenshots/03a-results-light.webp">
-</picture>
+<img alt="Batch screening results" src="assets/screenshots/03a-results-light.webp">
 
 **Structuring alert with a completed four-eyes review.** Three transfers just under the threshold within 7 days; the maker's decision and the checker's approval are both on record.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/04-alert-structuring-four-eyes-dark.webp">
-  <img alt="Structuring alert detail with decision history" src="assets/screenshots/04-alert-structuring-four-eyes-light.webp">
-</picture>
+<img alt="Structuring alert detail with decision history" src="assets/screenshots/04-alert-structuring-four-eyes-light.webp">
 
 **Waiting for second approval.** The first analyst marked the alert as a true match; a different analyst now approves or rejects it.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/05-alert-pending-second-approval-dark.webp">
-  <img alt="Alert pending second approval" src="assets/screenshots/05-alert-pending-second-approval-light.webp">
-</picture>
+<img alt="Alert pending second approval" src="assets/screenshots/05-alert-pending-second-approval-light.webp">
 
 **Rule settings.** Each typology can be switched on or off and tuned per company.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/06-rule-settings-dark.webp">
-  <img alt="Transaction monitoring rule settings" src="assets/screenshots/06-rule-settings-light.webp">
-</picture>
+<img alt="Transaction monitoring rule settings" src="assets/screenshots/06-rule-settings-light.webp">
 
 **Customer risk score breakdown.** Each factor shows its sub-score, weight and the reason behind it.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/07-subject-risk-score-dark.webp">
-  <img alt="Subject risk score breakdown" src="assets/screenshots/07-subject-risk-score-light.webp">
-</picture>
+<img alt="Subject risk score breakdown" src="assets/screenshots/07-subject-risk-score-light.webp">
 
 **Company dashboard.** Pending alerts, quota pools per module and search activity.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/08-company-dashboard-dark.webp">
-  <img alt="Company dashboard" src="assets/screenshots/08-company-dashboard-light.webp">
-</picture>
+<img alt="Company dashboard" src="assets/screenshots/08-company-dashboard-light.webp">
 
 **Unified alert inbox.** Monitoring and transaction alerts in one queue.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/09-unified-alert-inbox-dark.webp">
-  <img alt="Unified alert inbox" src="assets/screenshots/09-unified-alert-inbox-light.webp">
-</picture>
+<img alt="Unified alert inbox" src="assets/screenshots/09-unified-alert-inbox-light.webp">
 
 **API keys.** Scoped keys; only the last four characters are ever shown again.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/10-api-keys-dark.webp">
-  <img alt="API key management" src="assets/screenshots/10-api-keys-light.webp">
-</picture>
+<img alt="API key management" src="assets/screenshots/10-api-keys-light.webp">
 
 **Transaction ledger.** Every ingested transaction, filterable by date, channel and counterparty.
 
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/11-transaction-ledger-dark.webp">
-  <img alt="Transaction ledger" src="assets/screenshots/11-transaction-ledger-light.webp">
-</picture>
+<img alt="Transaction ledger" src="assets/screenshots/11-transaction-ledger-light.webp">
 
 **Audit file (first page).** Generated in Turkish, the language of the local regulator.
 
@@ -142,9 +106,9 @@ of screening against public sanctions lists.
 | | |
 |---|---|
 | **Decision form:** a reason is always required | **Four-eyes trail:** maker and checker on record |
-| <picture>  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/02c-decision-form-dark.webp">  <img alt="Decision form" src="assets/screenshots/02c-decision-form-light.webp"></picture> | <picture>  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/04c-decision-history-dark.webp">  <img alt="Decision history with second approval" src="assets/screenshots/04c-decision-history-light.webp"></picture> |
+| <img alt="Decision form" src="assets/screenshots/02c-decision-form-light.webp"> | <img alt="Decision history with second approval" src="assets/screenshots/04c-decision-history-light.webp"> |
 | **Source lists with jurisdictions** | **Risk score factors with reasons** |
-| <picture>  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/02e-source-lists-dark.webp">  <img alt="Source lists table" src="assets/screenshots/02e-source-lists-light.webp"></picture> | <picture>  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/07a-breakdown-dark.webp">  <img alt="Risk score breakdown" src="assets/screenshots/07a-breakdown-light.webp"></picture> |
+| <img alt="Source lists table" src="assets/screenshots/02e-source-lists-light.webp"> | <img alt="Risk score breakdown" src="assets/screenshots/07a-breakdown-light.webp"> |
 
 ## How it works
 
