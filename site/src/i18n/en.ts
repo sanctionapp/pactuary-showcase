@@ -37,6 +37,12 @@ export const en = {
     receiptIncomplete: "0 matches · a source failed → INCOMPLETE, not clear",
     shotAlt: "Screening results for a publicly listed sanctioned entity",
   },
+  demo: {
+    eyebrow: "Demo",
+    title: "A four-eyes decision in 72 seconds",
+    body: "Search, result, entity detail, a reasoned decision, and approval by a second analyst. Recorded on the synthetic demo bank.",
+    label: "Demo video: screening decision confirmed by a second analyst",
+  },
   problem: {
     eyebrow: "The problem",
     title: "Screening is easy to do. It is hard to defend.",
@@ -80,7 +86,7 @@ export const en = {
         title: "Batch screening",
         body:
           "Up to 100 subjects in a single request, with optional birth year and country to sharpen matching. A whole portfolio gets screened in seconds.",
-        shot: "03-batch-screening",
+        shot: "03a-results",
         alt: "Batch screening results",
       },
       {
@@ -192,7 +198,7 @@ export const en = {
     stackTitle: "Stack",
     stack: ["Next.js 16", "React 19", "TypeScript strict", "PostgreSQL", "Prisma", "pg_trgm + unaccent", "Supabase Auth", "Vitest", "Playwright", "Vercel"],
     quality: [
-      { value: "838", label: "passing tests" },
+      { value: "848", label: "passing tests" },
       { value: "88%", label: "line coverage (business logic)" },
       { value: "2", label: "languages, light & dark" },
     ],
@@ -249,14 +255,14 @@ export const en = {
       "Development was AI-assisted with Claude Code. I set the product scope, the architecture and the compliance rules; each decision is recorded in design documents.",
     ],
     roleTitle: "My role",
-    role: "Product owner, architect and developer. I owned the scope, the data and compliance model, the trade-offs and the quality bar (838 tests, 88% coverage on business logic).",
+    role: "Product owner, architect and developer. I owned the scope, the data and compliance model, the trade-offs and the quality bar (848 tests, 88% coverage on business logic).",
     recruiterTitle: "For recruiters, in five points",
     recruiter: [
       "Built an AML/sanctions SaaS end to end: screening, ongoing and transaction monitoring, case management and audit trail.",
       "Encoded compliance principles in code: empty ≠ clear, four-eyes, append-only decisions, topic-based risk.",
       "Implemented five transaction typologies, including structuring and velocity, with per-institution configuration.",
       "Measured matching quality honestly: 100% recall, 80.6% precision and a 24% false-positive rate on common names, published as is.",
-      "Shipped with engineering discipline: strict TypeScript, 838 tests, a resilient paid-API client and race-free quotas.",
+      "Shipped with engineering discipline: strict TypeScript, 848 tests, a resilient paid-API client and race-free quotas.",
     ],
     openTo: "Open to roles in AML / fraud prevention technology.",
     source: "Source code is private; happy to walk through it in an interview.",

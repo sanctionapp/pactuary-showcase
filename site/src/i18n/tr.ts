@@ -39,6 +39,12 @@ export const tr: Dict = {
     receiptIncomplete: "0 eşleşme · bir kaynak düştü → EKSİK, temiz değil",
     shotAlt: "Kamuya açık yaptırım listesindeki bir varlık için tarama sonuçları",
   },
+  demo: {
+    eyebrow: "Demo",
+    title: "72 saniyede dört göz onaylı bir karar",
+    body: "Arama, sonuç, varlık detayı, gerekçeli karar ve ikinci analistin onayı. Sentetik demo banka üzerinde kaydedildi.",
+    label: "Demo videosu: ikinci analist tarafından onaylanan tarama kararı",
+  },
   problem: {
     eyebrow: "Sorun",
     title: "Tarama yapmak kolay. Savunmak zor.",
@@ -82,7 +88,7 @@ export const tr: Dict = {
         title: "Toplu tarama",
         body:
           "Tek istekte 100 özneye kadar; eşleşmeyi keskinleştirmek için isteğe bağlı doğum yılı ve ülke. Bütün bir portföy saniyeler içinde taranır.",
-        shot: "03-batch-screening",
+        shot: "03a-results",
         alt: "Toplu tarama sonuçları",
       },
       {
@@ -194,7 +200,7 @@ export const tr: Dict = {
     stackTitle: "Teknoloji",
     stack: ["Next.js 16", "React 19", "TypeScript strict", "PostgreSQL", "Prisma", "pg_trgm + unaccent", "Supabase Auth", "Vitest", "Playwright", "Vercel"],
     quality: [
-      { value: "838", label: "geçen test" },
+      { value: "848", label: "geçen test" },
       { value: "%88", label: "satır kapsamı (iş mantığı)" },
       { value: "2", label: "dil, aydınlık ve karanlık tema" },
     ],
@@ -251,14 +257,14 @@ export const tr: Dict = {
       "Geliştirme Claude Code ile yapay zekâ destekli yapıldı. Ürün kapsamını, mimariyi ve uyum kurallarını ben belirledim; her karar tasarım belgelerinde kayıtlı.",
     ],
     roleTitle: "Rolüm",
-    role: "Ürün sahibi, mimar ve geliştirici. Kapsamın, veri ve uyum modelinin, ödünleşimlerin ve kalite çıtasının (838 test, iş mantığında %88 kapsam) sahibiyim.",
+    role: "Ürün sahibi, mimar ve geliştirici. Kapsamın, veri ve uyum modelinin, ödünleşimlerin ve kalite çıtasının (848 test, iş mantığında %88 kapsam) sahibiyim.",
     recruiterTitle: "İşe alımcılar için beş maddede",
     recruiter: [
       "Bir AML/yaptırım SaaS'ını uçtan uca kurdum: tarama, sürekli ve işlem izleme, vaka yönetimi ve denetim izi.",
       "Uyum ilkelerini koda döktüm: boş ≠ temiz, dört göz, yalnızca eklenebilen kararlar, konu tabanlı risk.",
       "Parçalama ve hız/hacim dahil beş işlem tipolojisini kurum bazında ayarlanabilir olarak geliştirdim.",
       "Eşleşme kalitesini dürüstçe ölçtüm: %100 duyarlılık, %80,6 kesinlik ve yaygın isimlerde %24 yanlış pozitif oranı; olduğu gibi yayımlandı.",
-      "Mühendislik disipliniyle teslim ettim: strict TypeScript, 838 test, dayanıklı ücretli API istemcisi ve yarışsız kota.",
+      "Mühendislik disipliniyle teslim ettim: strict TypeScript, 848 test, dayanıklı ücretli API istemcisi ve yarışsız kota.",
     ],
     openTo: "AML / dolandırıcılık önleme teknolojisi alanındaki pozisyonlara açığım.",
     source: "Kaynak kod özel; bir mülakatta memnuniyetle üzerinden geçerim.",

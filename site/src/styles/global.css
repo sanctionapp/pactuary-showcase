@@ -218,6 +218,8 @@ p { margin: 0; }
 .frame-bar i { width: 9px; height: 9px; border-radius: 50%; background: var(--line); }
 .shot-missing { aspect-ratio: 16 / 10; display: grid; place-items: center; color: var(--muted); font: 0.85rem var(--font-mono); }
 
+.demo video { display: block; width: 100%; height: auto; background: var(--surface-2); }
+
 /* Problem */
 .compare { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
 .compare-col { padding: clamp(1.5rem, 3vw, 2rem); border-radius: var(--radius); border: 1px solid var(--line); }

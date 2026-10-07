@@ -4,6 +4,8 @@ import Icon from "./Icon.astro";
 import type { Dict } from "../i18n/en";
 import { LINKS, demoMailto } from "../consts";
 import { hasShot } from "../lib/shots";
+import demoVideo from "../../../assets/demo/pactuary-demo.mp4?url";
+import demoPoster from "../../../assets/demo/pactuary-demo-poster.webp?url";
 
 interface Props { t: Dict }
 const { t } = Astro.props;
@@ -56,6 +58,22 @@ const modules = t.modules.items.filter((m) => hasShot(m.shot));
     <div class="hero-shot">
       <Shot name={heroShot} alt={heroShot.startsWith("01") ? t.hero.shotAlt : t.modules.items.find((m) => m.shot === heroShot)?.alt ?? t.hero.shotAlt} eager sizes="(max-width: 1212px) 100vw, 1180px" />
     </div>
+  </div>
+</section>
+
+<section class="section demo" aria-labelledby="demo-title">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">{t.demo.eyebrow}</p>
+      <h2 id="demo-title">{t.demo.title}</h2>
+      <p class="lead">{t.demo.body}</p>
+    </div>
+    <figure class="frame">
+      <div class="frame-bar" aria-hidden="true"><i></i><i></i><i></i></div>
+      <video controls preload="none" playsinline poster={demoPoster} aria-label={t.demo.label} width="1440" height="900">
+        <source src={demoVideo} type="video/mp4" />
+      </video>
+    </figure>
   </div>
 </section>
 

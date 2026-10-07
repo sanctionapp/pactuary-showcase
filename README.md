@@ -2,18 +2,18 @@
 
 **AML & sanctions screening SaaS for compliance teams in Türkiye.**
 
-![Tests](https://img.shields.io/badge/tests-838%20passing-2f7d5b)
+![Tests](https://img.shields.io/badge/tests-848%20passing-2f7d5b)
 ![Coverage](https://img.shields.io/badge/coverage-88%25%20(business%20logic)-2f7d5b)
 ![TypeScript](https://img.shields.io/badge/TypeScript-strict-3178c6)
 ![Next.js](https://img.shields.io/badge/Next.js-16-111111)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Supabase-336791)
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/04-alert-structuring-four-eyes-dark.webp">
-  <img alt="Structuring alert with triggering transactions and a completed four-eyes review" src="assets/screenshots/04-alert-structuring-four-eyes-light.webp">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/01-screening-results-dark.webp">
+  <img alt="Screening results for a publicly listed sanctioned entity, with risk level, topics and source lists" src="assets/screenshots/01-screening-results-light.webp">
 </picture>
 
-**Website:** [pactuary-showcase.vercel.app](https://pactuary-showcase.vercel.app)
+**Website:** [pactuary-showcase.vercel.app](https://pactuary-showcase.vercel.app) · **Demo video (72 s):** [MP4](assets/demo/pactuary-demo.mp4)
 
 > This is a code-free showcase. The product source code is private; I'm happy to walk through it in an interview.
 
@@ -44,12 +44,17 @@ dangerous failure is a silent one: a list source that was down gets read as "no 
 Adverse media is **provider-ready (stub)**: the interface, data model, API and screen are built, but no news vendor is connected
 yet and the screen labels its output as sample data. KYC/CDD onboarding is on the **roadmap**.
 
+## Demo
+
+Search → result → entity detail → decision → second approver (four-eyes). 72 seconds;
+[MP4 version](assets/demo/pactuary-demo.mp4).
+
+![Demo: a sanctions screening decision confirmed by a second analyst](assets/demo/pactuary-demo.gif)
+
 ## Screenshots
 
 All customers, subjects and transactions are fictional (a synthetic "Pactuary Demo Bank"). Real names appear only as results
 of screening against public sanctions lists.
-
-<!-- Screens 01–03 (screening results, entity detail, batch screening) are added in the next update.
 
 **Screening results.** Risk level, topics, match score and the source lists behind each match.
 
@@ -65,14 +70,12 @@ of screening against public sanctions lists.
   <img alt="Entity detail with decision form" src="assets/screenshots/02-entity-detail-decision-light.webp">
 </picture>
 
-**Batch screening.** A mixed portfolio screened in one request.
+**Batch screening.** Two sanctioned companies and two fictional customers screened in one request.
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/03-batch-screening-dark.webp">
-  <img alt="Batch screening" src="assets/screenshots/03-batch-screening-light.webp">
+  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/03a-results-dark.webp">
+  <img alt="Batch screening results" src="assets/screenshots/03a-results-light.webp">
 </picture>
-
--->
 
 **Structuring alert with a completed four-eyes review.** Three transfers just under the threshold within 7 days; the maker's decision and the checker's approval are both on record.
 
@@ -133,6 +136,15 @@ of screening against public sanctions lists.
 **Audit file (first page).** Generated in Turkish, the language of the local regulator.
 
 <img alt="First page of the audit PDF" src="assets/screenshots/12-audit-pdf.webp" width="520">
+
+### Close-ups
+
+| | |
+|---|---|
+| **Decision form:** a reason is always required | **Four-eyes trail:** maker and checker on record |
+| <picture>  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/02c-decision-form-dark.webp">  <img alt="Decision form" src="assets/screenshots/02c-decision-form-light.webp"></picture> | <picture>  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/04c-decision-history-dark.webp">  <img alt="Decision history with second approval" src="assets/screenshots/04c-decision-history-light.webp"></picture> |
+| **Source lists with jurisdictions** | **Risk score factors with reasons** |
+| <picture>  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/02e-source-lists-dark.webp">  <img alt="Source lists table" src="assets/screenshots/02e-source-lists-light.webp"></picture> | <picture>  <source media="(prefers-color-scheme: dark)" srcset="assets/screenshots/07a-breakdown-dark.webp">  <img alt="Risk score breakdown" src="assets/screenshots/07a-breakdown-light.webp"></picture> |
 
 ## How it works
 
@@ -263,7 +275,7 @@ collection), October 2026:
 
 ## Engineering quality
 
-- **838 passing tests** (Vitest) and **88% line coverage** on the business-logic layer (`src/lib`; UI components and routes are
+- **848 passing tests** (Vitest) and **88% line coverage** on the business-logic layer (`src/lib`; UI components and routes are
   outside the coverage scope).
 - **TypeScript strict** across about 25k lines in 223 source files.
 - **i18n:** Turkish and English with about 840 dictionary keys, plus light and dark themes.
